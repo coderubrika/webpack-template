@@ -1,9 +1,11 @@
-const path = require('path')
-const fs = require('fs')
-const childProcess = require('child_process');
-const args = process.argv.slice(2)
-const {saveJson, readJson, createFile, remove: removeFileOrDir} = require('./index')
-const command = args[0]
+import {initScript} from './init' 
+
+const args: string[] = process.argv.slice(2)
+
+import {saveJson, readJson, createFile, removeFile as removeFileOrDir} from './index'
+
+const command: string = args[0]
+
 const config = require('config')
 
 
@@ -24,7 +26,7 @@ async function helper() {
         }
     
         case "init": {
-            const process = childProcess.fork('utils/init.js');
+            initScript();
             break
         }
     
@@ -36,7 +38,7 @@ async function helper() {
 
 
 
-async function add(args) {
+async function add(args: string[]) {
     const operator = args[0]
 
     switch(operator) {
@@ -50,7 +52,6 @@ async function add(args) {
             const configJson = await readJson(configPath)
 
             for (const chank of chanks) {
-                console.log('aaaaa', chank);
                 await createFile(pagesPath, `${chank}.html`)
                 await createFile(entriesPath, `${chank}.ts`)
                 configJson.projectSettings.pages.push(chank)
@@ -67,7 +68,7 @@ async function add(args) {
     }
 }
 
-async function remove(args) {
+async function remove(args: string[]) {
     const operator = args[0]
 
     switch(operator) {
@@ -81,7 +82,7 @@ async function remove(args) {
             const configJson = await readJson(configPath)
 
             if (chanks.length == 1 && chanks[0] == '*') {
-                configJson.projectSettings.pages.forEach( async page => {
+                configJson.projectSettings.pages.forEach( async (page: string) => {
                     await removeFileOrDir(pagesPath, `${page}.html`)
                     await removeFileOrDir(entriesPath, `${page}.ts`)
                 });
@@ -92,7 +93,7 @@ async function remove(args) {
                 for (const chank of chanks) {
                     await removeFileOrDir(pagesPath, `${chank}.html`)
                     await removeFileOrDir(entriesPath, `${chank}.ts`)
-                    configJson.projectSettings.pages = configJson.projectSettings.pages.filter(item => item !== chank)
+                    configJson.projectSettings.pages = configJson.projectSettings.pages.filter((item: string) => item !== chank)
                 }
             }
             

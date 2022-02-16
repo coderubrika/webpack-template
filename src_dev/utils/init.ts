@@ -1,4 +1,5 @@
-const path = require('path')
+import * as path from 'path'
+
 // see to redux exploration in future
 // see to lowdb exploration insted fs-extra for read/write json data in future
 const {readJson, saveJson} = require('./index')
@@ -13,7 +14,7 @@ const configPath = path.resolve(rootPath, 'config/default.json')
 
 
 
-async function initScript() {
+export async function initScript() {
     const configJson = await readJson(configPath)
 
     configJson.projectSettings['rootPath'] = rootPath
@@ -24,6 +25,4 @@ async function initScript() {
 
     saveJson(configPath, configJson)
 }
-
-initScript()
   

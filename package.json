@@ -8,17 +8,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "helper": "node ./utils/helper.js",
+    "helper": "node ./dev/utils/helper.js",
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "test": "npx jest",
-    "init": "node ./utils/init.js"
+    "init": "node ./utils/init.js",
+    "watch-dev-backend": "tsc --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/color": "^3.0.2",
+    "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.178",
     "@types/mathjs": "^9.4.2",
@@ -49,6 +51,7 @@
   },
   "dependencies": {
     "@math.gl/core": "^3.5.6",
+    "@types/node": "^17.0.18",
     "color": "^4.1.0",
     "lodash": "^4.17.21",
     "mathjs": "^10.0.2",

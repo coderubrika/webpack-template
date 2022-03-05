@@ -1,19 +1,10 @@
-import {initScript} from './init' 
-
-const args: string[] = process.argv.slice(2)
-
 import {saveJson, readJson, createFile, removeFile as removeFileOrDir} from './index'
-
-const command: string = args[0]
-
 import config from 'config'
 
 
-async function loadConfig() {
-    await helper()
-}
+export async function helper(args: string[]) {
+    const command: string = args[0]
 
-async function helper() {
     switch (command) {
         case "add": {
             await add(args.slice(1))
@@ -22,11 +13,6 @@ async function helper() {
     
         case "remove": {
             remove(args.slice(1))
-            break
-        }
-    
-        case "init": {
-            initScript();
             break
         }
     
@@ -108,5 +94,3 @@ async function remove(args: string[]) {
         }
     }
 }
-
-loadConfig()

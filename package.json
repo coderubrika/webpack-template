@@ -8,11 +8,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "helper": "node ./dev/utils/helper.js",
+    "helper": "node ./dev/index.js helper",
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "test": "npx jest",
-    "init": "node ./utils/init.js",
+    "init": "node ./dev/index.js init",
     "watch-dev-backend": "tsc --watch",
     "build-dev-backend": "tsc",
     "clear-js": "node utils-js/clear.js dev"

@@ -2,17 +2,18 @@ import * as path from 'path'
 
 import {readJson, saveJson} from './index'
 
-const rootPath = path.resolve(__dirname, '..')  
-const srcPath = path.resolve(rootPath, 'src')
-
-const pagesPath = path.resolve(srcPath, 'pages')
-const entriesPath = path.resolve(srcPath, 'entries')
-
-const configPath = path.resolve(rootPath, 'config/default.json')
 
 
 
-export async function initScript() {
+
+export async function initScript(rootPath: string) {
+    const srcPath = path.resolve(rootPath, 'src')
+
+    const pagesPath = path.resolve(srcPath, 'pages')
+    const entriesPath = path.resolve(srcPath, 'entries')
+
+    const configPath = path.resolve(rootPath, 'config/default.json')
+
     const configJson = await readJson(configPath)
 
     configJson.projectSettings['rootPath'] = rootPath

@@ -99,9 +99,6 @@
   //"exclude": ["src, **/node_modules"],
   //"include": ["src_dev"],
   "files": [
-    "src_dev/common/common.ts",
-    "src_dev/utils/helper.ts",
-    "src_dev/utils/index.ts",
-    "src_dev/utils/init.ts"
+    "src_dev/index.ts"
   ],
 }

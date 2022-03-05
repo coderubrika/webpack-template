@@ -13,13 +13,16 @@
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "test": "npx jest",
     "init": "node ./utils/init.js",
-    "watch-dev-backend": "tsc --watch"
+    "watch-dev-backend": "tsc --watch",
+    "build-dev-backend": "tsc",
+    "clear-js": "node utils-js/clear.js dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/color": "^3.0.2",
+    "@types/config": "^0.0.41",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.178",

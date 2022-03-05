@@ -6,11 +6,6 @@
 	},
 	"projectSettings": {
 		"pages": [
-		],
-		"rootPath": "B:\\forfan\\jank\\webpack_template",
-		"configPath": "B:\\forfan\\jank\\webpack_template\\config\\default.json",
-		"srcPath": "B:\\forfan\\jank\\webpack_template\\src",
-		"pagesPath": "B:\\forfan\\jank\\webpack_template\\src\\pages",
-		"entriesPath": "B:\\forfan\\jank\\webpack_template\\src\\entries"
+		]
 	}
 }

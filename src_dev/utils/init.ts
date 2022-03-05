@@ -1,8 +1,6 @@
 import * as path from 'path'
 
-// see to redux exploration in future
-// see to lowdb exploration insted fs-extra for read/write json data in future
-const {readJson, saveJson} = require('./index')
+import {readJson, saveJson} from './index'
 
 const rootPath = path.resolve(__dirname, '..')  
 const srcPath = path.resolve(rootPath, 'src')

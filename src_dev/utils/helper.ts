@@ -6,7 +6,7 @@ import {saveJson, readJson, createFile, removeFile as removeFileOrDir} from './i
 
 const command: string = args[0]
 
-const config = require('config')
+import config from 'config'
 
 
 async function loadConfig() {
@@ -45,9 +45,9 @@ async function add(args: string[]) {
         case "page": {
             const chanks = args.slice(1)
 
-            const configPath = config.get('projectSettings.configPath')
-            const entriesPath = config.get('projectSettings.entriesPath')
-            const pagesPath = config.get('projectSettings.pagesPath')
+            const configPath: string = config.get('projectSettings.configPath')
+            const entriesPath: string = config.get('projectSettings.entriesPath')
+            const pagesPath: string = config.get('projectSettings.pagesPath')
             
             const configJson = await readJson(configPath)
 
@@ -75,9 +75,9 @@ async function remove(args: string[]) {
         case "page": {
             const chanks = args.slice(1)
             
-            const configPath = config.get('projectSettings.configPath')
-            const entriesPath = config.get('projectSettings.entriesPath')
-            const pagesPath = config.get('projectSettings.pagesPath')
+            const configPath: string = config.get('projectSettings.configPath')
+            const entriesPath: string = config.get('projectSettings.entriesPath')
+            const pagesPath: string = config.get('projectSettings.pagesPath')
             
             const configJson = await readJson(configPath)
 

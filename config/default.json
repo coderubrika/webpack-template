@@ -5,6 +5,14 @@
 		"externalHost": ""
 	},
 	"projectSettings": {
-		"pages": []
+		"pages": [],
+		"endpoints": [],
+		"rootPath": "C:\\Users\\Anton\\Documents\\forfun\\webpack-template",
+		"configPath": "C:\\Users\\Anton\\Documents\\forfun\\webpack-template\\config\\default.json",
+		"srcPath": "C:\\Users\\Anton\\Documents\\forfun\\webpack-template\\src",
+		"pagesPath": "C:\\Users\\Anton\\Documents\\forfun\\webpack-template\\src\\pages",
+		"entriesPath": "C:\\Users\\Anton\\Documents\\forfun\\webpack-template\\src\\entries",
+		"endpointsPath": "C:\\Users\\Anton\\Documents\\forfun\\webpack-template\\src\\endpoints",
+		"templatesPath": "C:\\Users\\Anton\\Documents\\forfun\\webpack-template\\templates"
 	}
 }

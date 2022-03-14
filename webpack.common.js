@@ -10,16 +10,24 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const config = require('config');
 
 const pages = config.get('projectSettings.pages')
+const endpoints = config.get('projectSettings.endpoints')
 
 module.exports = {
-  entry: (items => {
+  entry: ((_pages, _endpoints) => {
     const conf = {}
-    items.forEach(item => {
-      conf[item] = `./src/entries/${item}.ts`
+    _pages.forEach(page => {
+      conf[page] = `./src/entries/${page}.ts`
     })
     
+    _endpoints.forEach(endpoint => {
+      conf[endpoint] = `./src/endpoints/${endpoint}/index.ts`
+    })
+
+    conf['index'] = './src/index.ts'
+
     return conf
-  })(pages)
+  })(pages, endpoints)
+
   ,
   mode: 'development',
   devtool: 'source-map',
@@ -69,6 +77,8 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js']
   },
   plugins: [].concat(
+
+
     pages.map( page => 
       new HtmlWebpackPlugin({
         inject: true,
@@ -76,6 +86,23 @@ module.exports = {
         filename: `${page}.html`,
         chunks: [page],
       }) ),
+
+
+    endpoints.map (endpoint =>
+      new HtmlWebpackPlugin({
+        inject: true,
+        template: `./src/endpoints/${endpoint}/${endpoint}.html`,
+        filename: `${endpoint}.html`,
+        chunks: [endpoint],
+      })),
+
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: `./src/index.html`,
+      filename: `index.html`,
+      chunks: ['index'],
+    }),
+
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].css'
@@ -83,9 +110,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     
     new ForkTsCheckerWebpackPlugin(),
-    new CopyPlugin({
-      patterns: [{ from: 'src/assets', to: 'assets' }]
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: 'src/assets', to: 'assets' }]
+    // }),
     new ESLintPlugin({
       extensions: ['.tsx', '.ts', '.js'],
       exclude: 'node_modules',
